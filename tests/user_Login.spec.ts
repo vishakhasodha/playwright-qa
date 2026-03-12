@@ -37,10 +37,10 @@ await page.locator("//input[@data-qa='signup-name']").fill(new_username);
 await page.locator("//input[@data-qa='signup-email']").fill(new_email);
  await page.locator("//button[@data-qa='signup-button']").click();
 
-await expect (page.locator("//input[@data-qa='name']")).toHaveValue('new_username');
-await expect (page.locator("//input[@data-qa='email']")).toHaveValue('new_email');
+await expect (page.locator("//input[@data-qa='name']")).toHaveValue(new_username);
+await expect (page.locator("//input[@data-qa='email']")).toHaveValue(new_email);
 await page.locator("//input[@id='id_gender2']").check();
-await page.locator("//input[@data-qa='email']").fill('password');
+await page.locator("//input[@data-qa='password']").fill('password');
 await page.locator("//*[@data-qa='days']").getByRole('option', { name: day }).click(); 
 // Example for a custom dropdown component
 
