@@ -41,8 +41,47 @@ await expect (page.locator("//input[@data-qa='name']")).toHaveValue(new_username
 await expect (page.locator("//input[@data-qa='email']")).toHaveValue(new_email);
 await page.locator("//input[@id='id_gender2']").check();
 await page.locator("//input[@data-qa='password']").fill('password');
-await page.locator("//*[@data-qa='days']").getByRole('option', { name: day }).click(); 
+await page.locator("//*[@data-qa='days']").selectOption(day); 
 // Example for a custom dropdown component
+  // await page.locator('#days').selectOption('2');
+  await page.locator('#years').selectOption(year_yy);
+  await page.locator('#months').selectOption(month);
+  await page.locator("//input[@id='newsletter']").check();
+  await page.locator("//input[@id='optin']").check();
+ 
+  await page.getByRole('checkbox', { name: 'Sign up for our newsletter!' }).check();
+  await page.getByRole('checkbox', { name: 'Receive special offers from' }).check();
+  
+  await page.locator('#months').selectOption('8');
+  await page.locator('div').filter({ hasText: 'Enter Account Information' }).nth(1).click();
+  await page.getByText('Receive special offers from').click({
+    modifiers: ['ControlOrMeta']
+  });
+  await page.locator('div').filter({ hasText: 'Enter Account Information' }).nth(1).click();
+  await page.getByRole('textbox', { name: 'First name *' }).click();
+  await page.getByRole('textbox', { name: 'First name *' }).fill('io');
+  await page.getByRole('textbox', { name: 'Last name *' }).click();
+  await page.getByRole('textbox', { name: 'Last name *' }).fill('bjbj');
+  await page.getByRole('textbox', { name: 'Company', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Company', exact: true }).fill('hhkjkj');
+  await page.getByRole('textbox', { name: 'Address * (Street address, P.' }).click();
+  await page.getByRole('textbox', { name: 'Address * (Street address, P.' }).fill('jhvjkmj,jb');
+  await page.getByRole('textbox', { name: 'Address 2' }).click();
+  await page.getByRole('textbox', { name: 'Address 2' }).fill('bkbkb');
+  await page.getByRole('textbox', { name: 'State *' }).click();
+  await page.getByRole('textbox', { name: 'State *' }).fill('rajasthan');
+  await page.getByRole('textbox', { name: 'State *' }).press('Tab');
+  await page.getByRole('textbox', { name: 'City * Zipcode *' }).fill('jodhpur');
+  await page.locator('#zipcode').click();
+  await page.locator('#zipcode').fill('342001');
+  await page.getByRole('textbox', { name: 'Mobile Number *' }).click();
+  await page.getByRole('textbox', { name: 'Mobile Number *' }).fill('9004217328');
+  await page.getByRole('button', { name: 'Create Account' }).click();
+});
+
+
+
+});
 
 
 
